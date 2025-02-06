@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include "get_next_line/get_next_line.h"
+#include "./get_next_line/get_next_line.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -10,7 +10,7 @@
 typedef struct s_data
 {
 	struct	s_data	*player;
-	char	**map_copy;
+	char	**map_reachable;
     char    **map;
     char    *path;
     int     vertical;
@@ -38,9 +38,7 @@ void	a(t_data *data);
 int		s_strchr(char *str, char c);
 int		s_strlen(char *str);
 void	error(char *error);
-void 	flood_fill(t_data *data);
-void 	marker(t_data *data);
-
-
+// void	flood_fill(t_data *data);
+void	check_reachable(t_data *data);
 
 #endif
