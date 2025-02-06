@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:41:10 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/05 04:48:30 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:44:48 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	map_read(t_data *data)
 		error("File does not open!");
 	data->map = malloc(sizeof(char *) * data->vertical);
 	if (!data->map)
-		return(close(fd), free(data->map), error("Allocation Failed!"));
+		return (close(fd), free(data->map), error("Allocation Failed!"));
 	while (i < data->vertical)
 	{
 		data->map[i] = get_next_line(fd);
@@ -85,9 +85,12 @@ void	map_includes(t_data *data)
         }
         i++;
     }
-    i = -1;
-    while(data->map[++i] < data->vertical)
-        data->map_copy[i] = data->map[i];
+	data->map_reachable = malloc(sizeof(char *) * data->vertical);
+    if (!data->map_reachable)
+		return(free(data->map_reachable), error("Allocation Failed!"));
+	i = -1;
+    while(++i < data->vertical)
+        data->map_reachable[i] = data->map[i];
 }
 
 void	map_valid(t_data *data)
@@ -111,6 +114,9 @@ void	map_valid(t_data *data)
 			return(free(data->map), error("All map lines must be same!"));
 		i++;
 	}
+	data->player = malloc(sizeof(t_data));
+	if (!data->player)
+		return(free(data->player), error("Allocation Failed!"));
 }
 
 void	map_requirements(t_data *data)
