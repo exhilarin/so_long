@@ -1,5 +1,10 @@
 NAME= so_long
-SRCS= so_long.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c utils.c map.c
+SRCS= so_long.c 
+	\ utils.c 
+	\ map.c
+	\ move.c
+	\ get_next_line/get_next_line_utils.c 
+	\ get_next_line/get_next_line.c 
 
 CC= cc
 CFLAGS= -Wall -Wextra -Werror
