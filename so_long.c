@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 23:04:23 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/05 04:04:19 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/06 17:20:31 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int main(int ac, char *av[])
 
     data = malloc(sizeof(t_data));
     data->path = av[1];
-    data->player = malloc(sizeof(t_data));
     map_control(ac, data);
     map_read(data);
     map_includes(data);
     map_valid(data);
     map_requirements(data);
-    
+    // flood_fill(data);
+    check_reachable(data);
 }
 
