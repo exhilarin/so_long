@@ -38,7 +38,7 @@ void	a(t_data *data);
 int		s_strchr(char *str, char c);
 int		s_strlen(char *str);
 void	error(char *error);
-// void	flood_fill(t_data *data);
-void	check_reachable(t_data *data);
+void	flood_fill(t_data *data, int i, int j);
+void		check_reachable(t_data *data);
 
 #endif
