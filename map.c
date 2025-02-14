@@ -6,13 +6,13 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:41:10 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/06 16:44:48 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/14 20:55:48 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_control(int ac, t_data *data)
+void	file_control(int ac, t_data *data)
 {
 	int		bend;
 	int		end;
@@ -125,7 +125,6 @@ void	map_requirements(t_data *data)
 	data->check_c = 0;
 	data->check_e = 0;
 	data->i = -1;
-	data->j = -1;
 	while (++data->i < data->vertical)
     {	
         data->j = -1;
@@ -134,13 +133,13 @@ void	map_requirements(t_data *data)
             if (data->map[data->i][data->j] == 'P')
 			{
             	data->check_p++;
-				data->player->x = data->i;
-				data->player->y = data->j;
+				data->player->x = data->j;
+				data->player->y = data->i;
 			}
 			if (data->map[data->i][data->j] == 'C')
                 data->check_c++;
             if (data->map[data->i][data->j] == 'E')
-                data->check_e++;
+				data->check_e++;
         }
     }
     if(data->check_p != 1 || data->check_c == 0 || data->check_e != 1)
