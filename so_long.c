@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 23:04:23 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/14 19:44:05 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/15 20:09:25 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,20 @@ void map_checks(t_data *data, int ac)
     map_includes(data);
     map_valid(data);
     map_requirements(data);
+    map_copy(data);
 	disable_exit(data);
     flood_fill(data, data->player->x, data->player->y);
     check_reachable(data);
+}
+
+void mlx_checks(t_data *data)
+{
+    mlx_creat(data);
+    mlx_graphical_convert(data);
+    mlx_photo_fill(data, 0, 0);
+    mlx_hook(data->mlx->window, 17, 0, handle_close, data);
+	mlx_key_hook(data->mlx->window, key_hook, data);
+    mlx_loop(data->mlx->init);
 }
 
 int main(int ac, char *av[])
@@ -33,8 +44,6 @@ int main(int ac, char *av[])
     data->path = av[1];
     map_checks(data, ac);
     ft_printf("%s", "Game started!\n");
-    mlx_creat(data);
-    mlx_graphical_convert(data);
-    mlx_photo_fill(data, 0, 0);
-    mlx_loop(data->mlx->init);
+    mlx_checks(data);
+
 }

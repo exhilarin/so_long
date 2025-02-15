@@ -1,16 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:41:10 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/15 14:15:26 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/15 13:56:13 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	file_control(int ac, t_data *data)
+{
+	int		bend;
+	int		end;
+	char	*ber = ".ber";
+
+	end = 0;
+	bend = 3;
+	if (ac == 2)
+	{
+		while (data->path[end] != '\0')
+			end++;
+		end--;
+		while (data->path[end] == ber[bend])
+		{
+			end--;
+			bend--;
+		}
+		if  (bend != -1)
+			error("Map file's name should end with the \".ber\"!");
+	}
+	else
+		error("Wrong Input!");
+}
 
 void	map_read(t_data *data)
 {
@@ -39,30 +64,6 @@ void	map_read(t_data *data)
 		i++;
 	}
 	data->horizontal = s_strlen(data->map[0]);
-}
-
-void map_copy(t_data *data)
-{
-	int	fd;
-	int i;
-	
-	data->map_reachable = malloc(sizeof(char *) * data->vertical);
-    if (!data->map_reachable)
-		return(free(data->map_reachable), error("Allocation Failed!"));
-	i = 0;
-	fd = open(data->path, O_RDONLY);
-	if (fd == -1)
-		error("File does not open!");
-	data->map_reachable = malloc(sizeof(char *) * data->vertical);
-	if (!data->map)
-		return (close(fd), free(data->map_reachable), error("Allocation Failed!"));
-	while (i < data->vertical)
-	{
-		data->map_reachable[i] = get_next_line(fd);
-		if (!data->map_reachable)
-			return (close(fd), free(data->map_reachable), error("Get Line Failed!"));
-		i++;
-	}
 }
 
 void	map_includes(t_data *data)

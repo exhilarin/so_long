@@ -9,7 +9,16 @@
 #include <string.h>
 #include <fcntl.h>
 
-#define F_NUM 8
+#define	UP		65362
+#define	RIGHT	65363
+#define LEFT	65361
+#define	DOWN	65364
+#define	ESC 	65307
+#define	W		119
+#define	A		97
+#define	S		115
+#define	D		100
+
 
 typedef struct s_data
 {
@@ -55,8 +64,6 @@ void	map_read(t_data *data);
 void	map_includes(t_data *data);
 void	map_valid(t_data *data);
 void	map_requirements(t_data *data);
-int		s_strchr(char *str, char c);
-int		s_strlen(char *str);
 void	error(char *error);
 void	disable_exit(t_data *data);
 void	flood_fill(t_data *data, int i, int j);
@@ -64,6 +71,15 @@ void	check_reachable(t_data *data);
 void	mlx_creat(t_data *data);
 void	mlx_photo_fill(t_data *data, int x, int y);
 void	mlx_graphical_convert(t_data *data);
-int		mlx_bojack_animation(t_data *data);
+void	map_copy(t_data *data);
+void	mlx_checks(t_data *data);
+void	free_map(t_data *data);
+int		key_hook(int keycode, t_data *data);
+int		handle_close(t_data *data);
+int		quit_game(t_data *game);
+int		s_strchr(char *str, char c);
+int		s_strlen(char *str);
+
+// void	player_move(t_data *data);
 
 #endif
