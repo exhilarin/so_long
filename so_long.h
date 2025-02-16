@@ -1,60 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/16 17:38:44 by iguney            #+#    #+#             */
+/*   Updated: 2025/02/16 17:43:50 by iguney           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
-#include "./get_next_line/get_next_line.h"
-#include "./ft_printf/ft_printf.h"
-#include "./mlx/mlx.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
+# include "./get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
+# include "./mlx/mlx.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <fcntl.h>
 
-#define	UP		65362
-#define	RIGHT	65363
-#define LEFT	65361
-#define	DOWN	65364
-#define	ESC 	65307
-#define	W		119
-#define	A		97
-#define	S		115
-#define	D		100
-
+# define TILE_SIZE 	64
+# define UP			65362
+# define RIGHT		65363
+# define LEFT		65361
+# define DOWN		65364
+# define ESC 		65307
+# define W			119
+# define A			97
+# define S			115
+# define D			100
 
 typedef struct s_data
 {
-	struct	s_data	*player;
-	struct	s_data	*exit;
-	struct	s_data	*mlx;
-	
-	char	**map_reachable;
-    char    **map;
-    char    *path;
+	struct s_data	*player;
+	struct s_data	*exit;
+	struct s_data	*mlx;
 
-	void	*init;
-	void	*window;
+	char **map_reachable;
+	char **map;
+	char *path;
 
-    int     vertical;
-    int     horizontal;
+	void *init;
+	void *window;
 
-	void	*bojack;
-	void	*princess;
-	void	*bush;
-	void	*daisy;
-	void	*grass;
+	int vertical;
+	int horizontal;
 
-    int		check_p;
-	int		check_c;
-    int		check_e;
+	void *bojack;
+	void *princess;
+	void *bush;
+	void *daisy;
+	void *grass;
 
-    int		i;
-	int		j;
+	int check_p;
+	int check_c;
+	int check_e;
 
-	int		x;
-	int		y;
+	int collected;
+	int moves;
 
-	int		c;
-	int		p;
-	int		e;
+	int i;
+	int j;
+
+	int x;
+	int y;
+
+	int c;
+	int p;
+	int e;
 
 }   t_data;
 
@@ -71,15 +86,19 @@ void	check_reachable(t_data *data);
 void	mlx_creat(t_data *data);
 void	mlx_photo_fill(t_data *data, int x, int y);
 void	mlx_graphical_convert(t_data *data);
+void	draw_pixel(t_data *data, int x, int y);
+void	draw_map(t_data *data);
+void	free_map(t_data *data);
 void	map_copy(t_data *data);
 void	mlx_checks(t_data *data);
-void	free_map(t_data *data);
+void	move(t_data *data, int lr, int ud);
+int		win_check(t_data *data, int x_new, int y_new);
 int		key_hook(int keycode, t_data *data);
 int		handle_close(t_data *data);
 int		quit_game(t_data *game);
 int		s_strchr(char *str, char c);
 int		s_strlen(char *str);
+int		quit_game(t_data *data);
 
-// void	player_move(t_data *data);
 
 #endif

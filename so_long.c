@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 23:04:23 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/15 20:09:25 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:04:47 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,18 @@ void mlx_checks(t_data *data)
     mlx_loop(data->mlx->init);
 }
 
+int handle_close(t_data *data)
+{
+    quit_game(data);
+    exit(0);
+    return (0);
+}
+
 int main(int ac, char *av[])
 {
     t_data *data;
 
+    (void)ac;
     data = malloc(sizeof(t_data));
     data->path = av[1];
     map_checks(data, ac);

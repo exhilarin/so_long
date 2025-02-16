@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 07:00:37 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/15 14:15:22 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/16 13:34:02 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	file_control(int ac, t_data *data)
 			bend--;
 		}
 		if  (bend != -1)
-			error("Map file's name should end with the \".ber\"!");
+			error("Map file's name must end with the \".ber\"!");
 	}
 	else
 		error("Wrong Input!");

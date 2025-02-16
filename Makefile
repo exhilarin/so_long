@@ -1,5 +1,5 @@
 NAME= so_long
-SRCS= so_long.c utils.c map.c reachable.c get_next_line/get_next_line_utils.c get_next_line/get_next_line.c render.c button.c
+SRCS= so_long.c utils.c map.c reachable.c get_next_line/get_next_line_utils.c get_next_line/get_next_line.c render.c movement.c
 CC= cc
 CFLAGS= -Wall -Wextra -Werror -g
 MLX_PATH = ./mlx
