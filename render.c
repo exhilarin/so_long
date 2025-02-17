@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 00:06:36 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/16 16:58:33 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/17 18:22:03 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ void mlx_graphical_convert(t_data *data)
 	int height = 64;
 	data->grass = mlx_xpm_file_to_image(data->mlx->init, "./textures/floor/grass.xpm", &width, &height);
 	if(!data->grass)
-		return(free(data->mlx->bojack), error("Grass image does not render!"));
+		return(error("Grass image does not render!"));
 	data->daisy = mlx_xpm_file_to_image(data->mlx->init, "./textures/collectable/daisy.xpm", &width, &height);
 	if(!data->daisy)
-		return(free(data->mlx->daisy), error("Daisy image does not render!"));
+		return(error("Daisy image does not render!"));
 	data->bush = mlx_xpm_file_to_image(data->mlx->init, "./textures/wall/bush_one.xpm", &width, &height);
 	if(!data->bush)
-		return(free(data->mlx->bush), error("Bush image does not render!"));
+		return(error("Bush image does not render!"));
 	data->princess = mlx_xpm_file_to_image(data->mlx->init, "./textures/exit/princess_one.xpm", &width, &height);
 	if(!data->princess)
-		return(free(data->mlx->princess), error("Princess image does not render!"));
+		return(error("Princess image does not render!"));
 	data->bojack = mlx_xpm_file_to_image(data->mlx->init, "./textures/player/bojack_one.xpm", &width, &height);
 	if(!data->bojack)
-		return(free(data->mlx->bojack), error("Bojack image does not render!"));
+		return(error("Bojack image does not render!"));
 }
 
 void	mlx_photo_fill(t_data *data, int x, int y)
