@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:38:44 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/16 17:43:50 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/17 20:25:02 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define TILE_SIZE 	64
-# define UP			65362
-# define RIGHT		65363
-# define LEFT		65361
-# define DOWN		65364
-# define ESC 		65307
-# define W			119
-# define A			97
-# define S			115
-# define D			100
+# define TILE_SIZE		64
+# define UP				65362
+# define RIGHT			65363
+# define LEFT			65361
+# define DOWN			65364
+# define ESC			65307
+# define W				119
+# define A				97
+# define S				115
+# define D				100
 
 typedef struct s_data
 {
@@ -38,40 +38,39 @@ typedef struct s_data
 	struct s_data	*exit;
 	struct s_data	*mlx;
 
-	char **map_reachable;
-	char **map;
-	char *path;
+	char			**map_reachable;
+	char			**map;
+	char			*path;
 
-	void *init;
-	void *window;
+	void			*init;
+	void			*window;
 
-	int vertical;
-	int horizontal;
+	int				vertical;
+	int				horizontal;
 
-	void *bojack;
-	void *princess;
-	void *bush;
-	void *daisy;
-	void *grass;
+	void			*bojack;
+	void			*princess;
+	void			*bush;
+	void			*daisy;
+	void			*grass;
 
-	int check_p;
-	int check_c;
-	int check_e;
+	int				check_p;
+	int				check_c;
+	int				check_e;
 
-	int collected;
-	int moves;
+	int				collected;
+	int				moves;
 
-	int i;
-	int j;
+	int				i;
+	int				j;
 
-	int x;
-	int y;
+	int				x;
+	int				y;
 
-	int c;
-	int p;
-	int e;
-
-}   t_data;
+	int				c;
+	int				p;
+	int				e;
+}	t_data;
 
 void	map_checks(t_data *data, int ac);
 void	file_control(int ac, t_data *data);
@@ -99,6 +98,5 @@ int		quit_game(t_data *game);
 int		s_strchr(char *str, char c);
 int		s_strlen(char *str);
 int		quit_game(t_data *data);
-
 
 #endif

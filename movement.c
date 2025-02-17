@@ -6,14 +6,13 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:13:25 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/16 17:04:57 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/17 20:38:45 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-int key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == W || keycode == UP)
 		move(data, 0, -1);
@@ -29,10 +28,10 @@ int key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-void move(t_data *data, int lr, int ud)
+void	move(t_data *data, int lr, int ud)
 {
-	int new_x;
-	int new_y;
+	int	new_x;
+	int	new_y;
 
 	new_x = data->player->x + lr;
 	new_y = data->player->y + ud;
@@ -51,7 +50,7 @@ void move(t_data *data, int lr, int ud)
 
 int	win_check(t_data *data, int new_x, int new_y)
 {
-	if(data->map[new_y][new_x] == 'E' && (data->collected == data->check_c))
+	if (data->map[new_y][new_x] == 'E' && (data->collected == data->check_c))
 	{
 		write(1, "Congratulations! You got the princess!!\n", 38);
 		quit_game(data);
@@ -60,7 +59,7 @@ int	win_check(t_data *data, int new_x, int new_y)
 	return (0);
 }
 
-int quit_game(t_data *data)
+int	quit_game(t_data *data)
 {
 	if (data->map)
 		free_map(data);
@@ -95,9 +94,3 @@ void	free_map(t_data *data)
 	}
 	free(data->map);
 }
-
-
-
-
-
-
