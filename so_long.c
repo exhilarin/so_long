@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 23:04:23 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/17 20:40:53 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/18 19:12:36 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	handle_close(t_data *data)
 {
 	quit_game(data);
 	ft_printf("%s", "Game Over!");
+	// free(data->mlx);
+	// free(data.);
+	// mlx_destroy_image
+	// mlx_destroy_display
+	// mlx
 	exit(0);
 	return (0);
 }
@@ -51,7 +56,7 @@ int	main(int ac, char *av[])
 	(void)ac;
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (free(data), error(" "), 0);
+		return (free(data), 0);
 	data->path = av[1];
 	map_checks(data, ac);
 	ft_printf("%s", "START!\n");
