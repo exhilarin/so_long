@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 07:00:37 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/18 17:52:45 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/23 01:18:06 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,18 @@ void	file_control(int ac, t_data *data)
 			bend--;
 		}
 		if (bend != -1)
-			error("Map file's name must end with the \".ber\"!");
+			return (error("Map file's name must end with the \".ber\"!", data));
 	}
 	else
-		error("Wrong Input!");
+		return (error("Wrong Input!", data));
 }
 
 void	disable_exit(t_data *data)
 {
 	data->exit = malloc(sizeof(t_data));
 	if (!data->exit)
-		return (free(data->exit), error("Allocation Failed!"));
+		return (reachable_error("Allocation Failed!", data), free(data), \
+		free_mlx(data));
 	data->i = 0;
 	while (data->i < data->vertical)
 	{
@@ -87,10 +88,26 @@ void	check_reachable(t_data *data)
 		{
 			if (data->map_reachable[j][i] != '1'
 				&& data->map_reachable[j][i] != 'X')
-				return (free(data->map_reachable),
-					error("The map has an unreachable point!"));
+				return (exit_error("The map has an unreachable point!", data));
 			i++;
 		}
 		j++;
 	}
+}
+
+void	calculate_gnl(t_data *data)
+{
+	int	fd;
+
+	fd = open(data->path, O_RDONLY);
+	if (fd == -1)
+		return (error("File does not open!", data));
+	data->gnl = get_next_line(fd);
+	while (data->gnl)
+	{
+		data->vertical++;
+		free(data->gnl);
+		data->gnl = get_next_line(fd);
+	}
+	close(fd);
 }

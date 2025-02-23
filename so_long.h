@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 17:38:44 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/18 19:32:51 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/22 18:46:33 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_data
 	char			**map_reachable;
 	char			**map;
 	char			*path;
+
+	char			*gnl;	
 
 	void			*init;
 	void			*window;
@@ -78,25 +80,31 @@ void	map_read(t_data *data);
 void	map_includes(t_data *data);
 void	map_valid(t_data *data);
 void	map_requirements(t_data *data);
-void	error(char *error);
 void	disable_exit(t_data *data);
 void	flood_fill(t_data *data, int i, int j);
 void	check_reachable(t_data *data);
 void	mlx_creat(t_data *data);
+void	calculate_gnl(t_data *data);
 void	mlx_photo_fill(t_data *data, int x, int y);
 void	mlx_graphical_convert(t_data *data);
 void	draw_pixel(t_data *data, int x, int y);
 void	draw_map(t_data *data);
-void	free_map(t_data *data);
+void	free_mlx(t_data *data);
 void	map_copy(t_data *data);
 void	mlx_checks(t_data *data);
 void	move(t_data *data, int lr, int ud);
+void	quit_game(t_data *data);
+void	map_error(char *error, t_data *data);
+void	player_error(char *error, t_data *data);
+void	reachable_error(char *error, t_data *data);
+void	exit_error(char *error, t_data *data);
+void	free_main(t_data *data);
+void	free_mlx(t_data *data);
+void	error(char *error, t_data *data);
 int		win_check(t_data *data, int x_new, int y_new);
 int		key_hook(int keycode, t_data *data);
 int		handle_close(t_data *data);
-int		quit_game(t_data *game);
 int		s_strchr(char *str, char c);
 int		s_strlen(char *str);
-int		quit_game(t_data *data);
 
 #endif
