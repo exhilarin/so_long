@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 23:04:23 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/23 12:59:00 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/28 23:55:38 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	mlx_checks(t_data *data)
 {
 	mlx_creat(data);
 	mlx_graphical_convert(data);
-	mlx_photo_fill(data, 1, 1);
+	mlx_photo_fill(data, 0, 0);
 	mlx_hook(data->mlx->window, 17, 0, handle_close, data);
 	mlx_key_hook(data->mlx->window, key_hook, data);
 	mlx_loop(data->mlx->init);

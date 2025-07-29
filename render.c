@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 00:06:36 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/22 21:25:33 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/28 23:44:41 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	mlx_creat(t_data *data)
 	data->collected = 0;
 	data->mlx = malloc(sizeof(t_data));
 	if (!data->mlx)
-		return (exit_error("Memory allocation failed for mlx structure!", \
-		data));
+		return (exit_error("Memory allocation failed for mlx structure!",
+				data));
 	data->mlx->init = mlx_init();
 	if (!data->mlx->init)
-		return (exit_error("MLX initialization failed!", data), \
-		free(data->mlx));
+		return (exit_error("MLX initialization failed!", data),
+			free(data->mlx));
 	data->mlx->window = mlx_new_window(data->mlx->init,
 			data->horizontal * 64, data->vertical * 64, "so_long");
 	if (!data->mlx->window)
-		return (exit_error("Failed to open window!", data), free(data->mlx), \
-		free(data->mlx->init));
+		return (exit_error("Failed to open window!", data), free(data->mlx),
+			free(data->mlx->init));
 }
 
 void	mlx_graphical_convert(t_data *data)

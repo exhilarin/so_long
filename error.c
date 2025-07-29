@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:10:03 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/22 23:13:37 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/28 23:43:48 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void	exit_error(char *error, t_data *data)
 	free(data->map_reachable);
 	free(data->player);
 	free(data->exit);
-	free(data->mlx->init);
-	free(data->mlx);
 	perror(error);
 	free(data);
 	exit(0);

@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 07:00:37 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/23 01:18:06 by iguney           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:53:35 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	disable_exit(t_data *data)
 {
 	data->exit = malloc(sizeof(t_data));
 	if (!data->exit)
-		return (reachable_error("Allocation Failed!", data), free(data), \
-		free_mlx(data));
+		return (reachable_error("Allocation Failed!", data), free_mlx(data));
 	data->i = 0;
 	while (data->i < data->vertical)
 	{

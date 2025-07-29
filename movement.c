@@ -6,7 +6,7 @@
 /*   By: iguney <iguney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:13:25 by iguney            #+#    #+#             */
-/*   Updated: 2025/02/23 12:59:12 by iguney           ###   ########.fr       */
+/*   Updated: 2025/03/01 00:03:53 by iguney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	key_hook(int keycode, t_data *data)
 		move(data, 1, 0);
 	if (keycode == ESC)
 		handle_close(data);
-	ft_printf("Step:%d\n", data->moves);
 	draw_map(data);
 	return (0);
 }
@@ -48,6 +47,7 @@ void	move(t_data *data, int lr, int ud)
 	data->player->x = new_x;
 	data->player->y = new_y;
 	data->moves++;
+	ft_printf("Step:%d\n", data->moves);
 	win_check(data, new_x, new_y);
 }
 
